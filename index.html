@@ -1,0 +1,45 @@
+import random
+import time
+
+# Teams
+team1 = "Team A"
+team2 = "Team B"
+
+# Match details
+duration = 90  # Match duration in minutes
+events = ["Goal", "Foul", "Corner", "Missed Shot"]
+team1_score = 0
+team2_score = 0
+
+# Simulate the match
+print("⚽ Soccer Match Simulation ⚽")
+print(f"{team1} vs {team2}")
+print("Kickoff!\n")
+
+for minute in range(1, duration + 1):
+    # Random event chance
+    if random.random() < 0.1:  # 10% chance of an event
+        event = random.choice(events)
+        if event == "Goal":
+            scoring_team = random.choice([team1, team2])
+            if scoring_team == team1:
+                team1_score += 1
+            else:
+                team2_score += 1
+            print(f"{minute}': {scoring_team} scores! 🎉")
+        else:
+            print(f"{minute}': {event} occurred.")
+
+    time.sleep(0.1)  # Simulate real-time match updates
+
+# Full-time summary
+print("\nFull Time!")
+print(f"Final Score: {team1} {team1_score} - {team2_score} {team2_score}")
+if team1_score > team2_score:
+    print(f"{team1} wins!")
+elif team2_score > team1_score:
+    print(f"{team2} wins!")
+else:
+    print("It's a draw!")
+
+      
